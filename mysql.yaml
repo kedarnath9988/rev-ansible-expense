@@ -1,0 +1,19 @@
+- name: configure the db serice 
+  host: db
+  decome: yes 
+  gather_fats: false 
+  vars: 
+  mysql_passwd:  ExpenseApp@1
+  taskes:
+    - name: install the mysql server 
+      ansible.builtin.dnf:
+        name: mysql-server
+        state: present 
+    - name: start and enable the mysql service
+      ansible.builtin.service:
+        name: mysqld
+        state: started 
+        enable: yes 
+    - name: set the password 
+      ansible.builtin.command:
+        mysql_secure_installation --set-root-pass {{ mysql_passwd }}
