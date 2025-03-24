@@ -1,5 +1,5 @@
 - name: configure the db serice 
-  host: db
+  hosts: db
   decome: yes 
   gather_fats: false 
   vars: 
