@@ -1,11 +1,8 @@
-- name: configure the db serice 
-  hosts: db
-  decome: yes 
-  vars: 
-  mysql_passwd:  ExpenseApp@1
-  taskes:
-    - name: install the mysql server 
+- name: configure the backend services 
+  hosts: db 
+  become: yes 
+  tasks: 
+    - name: install mysql services
       ansible.builtin.dnf:
         name: mysql-server
-        state: installed
-    
+        state: latest 
